@@ -1,14 +1,18 @@
 Vue.config.devtools = true;
 
 Vue.component('wright-tabs', {
+    data(){
+        return {
+            tabs: []
+        }
+    },
     template: `
     <div>
         <div class="tabs">
             <ul>
-                <li class="is-active"><a>Pictures</a></li>
-                <li><a>Music</a></li>
-                <li><a>Videos</a></li>
-                <li><a>Documents</a></li>
+                <li v-for="tab in tabs" :class="{'is-active': tab.selected}">
+                    <a @click="selectTab(tab)">{{tab.name}}</a>
+                </li>
             </ul>
         </div>
 
@@ -17,12 +21,21 @@ Vue.component('wright-tabs', {
         </div>
     </div>
     `,
-    mounted() {
-        console.log(this.$children);
+    created() {
+        this.tabs = this.$children;
     },
+    methods: {
+        selectTab(tab){
+            console.log(tab.selected = true)
+        }
+    }
 })
 
 Vue.component('wright-tab', {
+    props: {
+        name: {required: true},
+        selected: {default: false}
+    },
     template: `
         <div>
             <slot></slot>
