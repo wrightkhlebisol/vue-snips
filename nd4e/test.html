@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueJS</title>
+    <style>
+      .is-loading {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Tasks</h1>
+      <h3>All Tasks</h3>
+      <ul>
+        <li v-for="task in tasks" v-text="task.description"></li>
+      </ul>
+      <h3>Completed</h3>
+      <ul>
+        <li v-for="task in completedTasks" v-text="task.description"></li>
+      </ul>
+      <h3>Incomplete</h3>
+      <ul>
+        <li v-for="task in incompleteTasks" v-text="task.description"></li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VueJS</title>
-    <style>
-      .is-loading {
-        background-color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app">
-      <h1>Tasks</h1>
-      <h3>All Tasks</h3>
-      <ul>
-        <li v-for="task in tasks" v-text="task.description"></li>
-      </ul>
-      <h3>Completed</h3>
-      <ul>
-        <li v-for="task in completedTasks" v-text="task.description"></li>
-      </ul>
-      <h3>Incomplete</h3>
-      <ul>
-        <li v-for="task in incompleteTasks" v-text="task.description"></li>
-      </ul>
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-    <script src="main.js"></script>
-  </body>
+</head>
+<body>
+    <div id="app" class="container">
+		<wright-tabs>
+			<wright-tab name="About Us" :selected="true">
+				<h1>Here is the content for about us tab</h1>
+			</wright-tab>
+			<wright-tab name="About Our Culture">
+				<h1>Here is the content for about our culture tab</h1>		
+			</wright-tab>
+			<wright-tab name="About Our Vision">
+				<h1>Here is the content for about our vision tab</h1>
+			</wright-tab>
+		</wright-tabs>
+
+
+
+
+
+
+
+		<wright-modal v-show="showModal" @close="showModal = false"></wright-modal>
+		<button @click="showModal = true">Show Modal</button>
+		<wright-message title="the title" body="The body or content"></wright-message>
+		<wright-message title="second title" body="content goes here"></wright-message>
+    </div>
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+	<script src="index.js"></script>
+	<style>
+		.container{
+			margin-top: 80px;
+		}
+	</style>
+</body>
 </html>
