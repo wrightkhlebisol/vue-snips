@@ -1,5 +1,3 @@
-Vue.config.devtools = true;
-
 Vue.component('wright-tabs', {
     data(){
         return {
@@ -10,7 +8,7 @@ Vue.component('wright-tabs', {
     <div>
         <div class="tabs">
             <ul>
-                <li v-for="tab in tabs" :class="{'is-active': tab.changedTab}">
+                <li v-for="tab in tabs" :class="{'is-active': tab.isActive}">
                     <a @click="selectTab(tab)">{{tab.name}}</a>
                 </li>
             </ul>
@@ -27,7 +25,7 @@ Vue.component('wright-tabs', {
     methods: {
         selectTab(selectedTab){
             this.tabs.forEach(tab => {
-                tab.changedTab = (tab.name == selectedTab.name)
+                tab.isActive = (tab.name == selectedTab.name)
                 // console.log(tab.selected)
             });
             // console.log(tab.selected = true)
@@ -36,20 +34,20 @@ Vue.component('wright-tabs', {
 })
 
 Vue.component('wright-tab', {
+    template: `
+        <div v-show="isActive">
+            <slot></slot>
+        </div>
+    `,
     props: {
         name: {required: true},
         selected: {default: false}
     },
     data(){
         return {
-            changedTab : this.selected
+            isActive : this.selected
         }
     },
-    template: `
-        <div>
-            <slot></slot>
-        </div>
-    `,
 })
 
 Vue.component('wright-modal', {
