@@ -5,11 +5,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Component communication</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<style>
+		.container{
+			margin-top: 60px;
+		}
+	</style>
 </head>
 <body>
-	<div id="app">
-		
+	<div id="app" class="container">
+		<coupon @applied="onCouponApplied"></coupon>
+		<p>{{alertNote}}</p>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="index.js"></script>
