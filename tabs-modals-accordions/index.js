@@ -9,7 +9,7 @@ Vue.component('wright-tabs', {
         <div class="tabs">
             <ul>
                 <li v-for="tab in tabs" :class="{'is-active': tab.isActive}">
-                    <a @click="selectTab(tab)">{{tab.name}}</a>
+                    <a @click="selectTab(tab)" :href="tab.href">{{tab.name}}</a>
                 </li>
             </ul>
         </div>
@@ -48,6 +48,11 @@ Vue.component('wright-tab', {
             isActive : this.selected
         }
     },
+    computed: {
+        href(){
+            return '#' + this.name.split(' ').join('-').toLowerCase();
+        }
+    }
 })
 
 Vue.component('wright-modal', {
