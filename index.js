@@ -10,7 +10,7 @@ Vue.component('wright-tabs', {
     <div>
         <div class="tabs">
             <ul>
-                <li v-for="tab in tabs" :class="{'is-active': tab.selected}">
+                <li v-for="tab in tabs" :class="{'is-active': tab.changedTab}">
                     <a @click="selectTab(tab)">{{tab.name}}</a>
                 </li>
             </ul>
@@ -25,8 +25,12 @@ Vue.component('wright-tabs', {
         this.tabs = this.$children;
     },
     methods: {
-        selectTab(tab){
-            console.log(tab.selected = true)
+        selectTab(selectedTab){
+            this.tabs.forEach(tab => {
+                tab.changedTab = (tab.name == selectedTab.name)
+                // console.log(tab.selected)
+            });
+            // console.log(tab.selected = true)
         }
     }
 })
@@ -35,6 +39,11 @@ Vue.component('wright-tab', {
     props: {
         name: {required: true},
         selected: {default: false}
+    },
+    data(){
+        return {
+            changedTab : this.selected
+        }
     },
     template: `
         <div>
@@ -45,7 +54,7 @@ Vue.component('wright-tab', {
 
 Vue.component('wright-modal', {
     data(){
-        
+        return {}
     },
     template: `
     <div class="modal is-active">
